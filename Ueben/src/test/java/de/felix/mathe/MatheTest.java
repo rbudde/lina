@@ -10,7 +10,8 @@ public class MatheTest {
     @Test
     public void testMax() {
         Assert.assertEquals(5, Mathe.max(5, 4));
-        Assert.assertEquals(5, Mathe.max(5, 5));
+        Assert.assertEquals(5
+        	, Mathe.max(5, 5));
         Assert.assertEquals(5, Mathe.max(5, -3));
         Assert.assertEquals(6, Mathe.max(5, 6));
     }
