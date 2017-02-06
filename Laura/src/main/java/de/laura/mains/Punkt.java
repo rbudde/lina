@@ -16,12 +16,10 @@ public class Punkt {
     }
 
     public int getx() {
-
         return x;
     }
 
     public int gety() {
-
         return y;
     }
 
