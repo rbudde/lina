@@ -27,4 +27,15 @@ public class PunktTest {
 
     }
 
+    @Test
+
+    public void testAbstand() {
+
+        Punkt a = new Punkt(2, 2);
+        Punkt b = new Punkt(2, 4);
+
+        Assert.assertEquals(2.0, Punkt.abstand(a, b), 0.000001);
+
+    }
+
 }

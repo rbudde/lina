@@ -15,6 +15,11 @@ public class Punkt {
         y = 0;
     }
 
+    public Punkt(double a, double b) {
+        x = x;
+        y = y;
+    }
+
     public int getx() {
         return x;
     }
@@ -35,6 +40,16 @@ public class Punkt {
 
     public void ausgeben() {
         System.out.println(this.toString());
+    }
+
+    public static double abstand(Punkt p1, Punkt p2) {
+
+        int x = p1.getx() - p2.getx();
+        int y = p1.gety() - p2.gety();
+        double abstand = Math.sqrt(x * x + y * y);
+
+        return abstand;
+
     }
 
     @Override

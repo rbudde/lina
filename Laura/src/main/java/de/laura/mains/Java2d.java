@@ -3,7 +3,6 @@ package de.laura.mains;
 import java.awt.BasicStroke;
 import java.awt.Container;
 import java.awt.Graphics2D;
-import java.util.Random;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,12 +12,15 @@ import javax.swing.JPanel;
 public class Java2d {
     Graphics2D g2;
 
+    private final int WIDTH = 1000;
+    private final int HEIGHT = 700;
+
     public Java2d() {
         final JFrame frame = new JFrame();
-        frame.setSize(1400, 1000);
+        frame.setSize(WIDTH, HEIGHT);
 
         final JPanel panel = new JPanel();
-        panel.setSize(1400, 900);
+        panel.setSize(WIDTH, HEIGHT - 100);
 
         JButton button = new JButton("paint");
         button.setEnabled(true);
@@ -33,32 +35,29 @@ public class Java2d {
     }
 
     private void paint(JPanel panel) {
-        this.g2 = (Graphics2D) panel.getGraphics();
-        this.g2.clearRect(0, 0, panel.getWidth(), panel.getHeight());
-        BasicStroke stroke = new BasicStroke(8);
-        this.g2.setStroke(stroke);
+        g2 = (Graphics2D) panel.getGraphics();
+        g2.clearRect(0, 0, panel.getWidth(), panel.getHeight());
+        BasicStroke stroke = new BasicStroke(4);
+        g2.setStroke(stroke);
         this.paintImpl();
     }
 
     private void paintImpl() {
-        Random rnd = new Random(1998);
-        for ( int i = 0; i < 150; i++ ) {
-            Punkt p3 = new Punkt(rnd.nextInt(30), rnd.nextInt(900));
-            this.paint(p3);
-        }
-        for ( int i = 0; i < 150; i++ ) {
-            Punkt p3 = new Punkt(rnd.nextInt(30) + 400, rnd.nextInt(900));
-            this.paint(p3);
-        }
-        for ( int i = 0; i < 150; i++ ) {
-            Punkt p3 = new Punkt(rnd.nextInt(900), rnd.nextInt(30) + 400);
-            this.paint(p3);
-        }
+        Punkt a = new Punkt(1, 2);
+        Punkt b = new Punkt(400, 200);
+        Strecke st = new Strecke(a, b);
+        paint(st);
 
     }
 
     private void paint(Punkt p1) {
-        this.g2.drawLine(p1.getx(), p1.gety(), p1.getx(), p1.gety());
+        g2.drawLine(p1.getx(), p1.gety(), p1.getx(), p1.gety());
+    }
+
+    private void paint(Strecke st) {
+        Punkt start = st.getStart();
+        Punkt end = st.getEnd();
+        g2.drawLine(start.getx(), start.gety(), end.getx(), end.gety());
     }
 
     public static void main(String[] args) {
