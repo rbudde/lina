@@ -23,4 +23,9 @@ public class Strecke {
         return Punkt.abstand(start, end);
     }
 
+    @Override
+    public String toString() {
+        return "Strecke [start=" + start + ", end=" + end + "]";
+    }
+
 }

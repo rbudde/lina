@@ -43,21 +43,38 @@ public class Java2d {
     }
 
     private void paintImpl() {
-        Punkt a = new Punkt(1, 2);
-        Punkt b = new Punkt(400, 200);
+        Punkt a = new Punkt(100, 0);
+        Punkt b = new Punkt(500, 200);
         Strecke st = new Strecke(a, b);
         paint(st);
+        Punkt e = new Punkt(100, 100);
+        paint(e);
 
     }
 
     private void paint(Punkt p1) {
-        g2.drawLine(p1.getx(), p1.gety(), p1.getx(), p1.gety());
+        if ( isValid2DPoint(p1) ) {
+
+            g2.drawLine(p1.getx(), HEIGHT - p1.gety(), p1.getx(), HEIGHT - p1.gety());
+
+        } else {
+            System.out.println("Punkt ungültig:" + p1);
+        }
     }
 
     private void paint(Strecke st) {
         Punkt start = st.getStart();
         Punkt end = st.getEnd();
-        g2.drawLine(start.getx(), start.gety(), end.getx(), end.gety());
+        if ( isValid2DPoint(start) && isValid2DPoint(end) ) {
+            g2.drawLine(start.getx(), HEIGHT - start.gety(), end.getx(), HEIGHT - end.gety());
+
+        } else {
+            System.out.println("Punkte ungültig:" + st);
+        }
+    }
+
+    private boolean isValid2DPoint(Punkt pk) {
+        return pk.getx() <= WIDTH && pk.gety() <= HEIGHT && pk.getx() >= 0 && pk.gety() >= 0;
     }
 
     public static void main(String[] args) {
