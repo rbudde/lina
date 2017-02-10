@@ -1,6 +1,6 @@
 package de.budde.laura.shape;
 
-public class Segment {
+public class Segment extends Shape {
 
     private Point start;
     private Point end;

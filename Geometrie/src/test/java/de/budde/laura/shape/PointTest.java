@@ -42,6 +42,7 @@ public class PointTest {
         Assert.assertEquals(0.0, Point.distance(o, o), EPS);
         o.move(1, 1);
         o.print();
+
     }
 
 }

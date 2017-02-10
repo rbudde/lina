@@ -1,6 +1,6 @@
 package de.budde.laura.shape;
 
-public class Line {
+public class Line extends Shape {
     // y=mx+n
 
     private double m;
@@ -36,6 +36,16 @@ public class Line {
      */
     public int calculateY(int x) {
         return (int) (m * x + n);
+    }
+
+    /**
+     * Calculate X for argument Y.
+     *
+     * @param y The argument.
+     * @return X.
+     */
+    public int calculateX(int y) {
+        return (int) ((y - n) / m);
     }
 
     /**

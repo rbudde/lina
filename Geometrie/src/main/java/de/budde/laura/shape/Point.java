@@ -1,6 +1,6 @@
 package de.budde.laura.shape;
 
-public class Point {
+public class Point extends Shape {
 
     private int x;
     private int y;
@@ -26,7 +26,7 @@ public class Point {
 
     /**
      * Return the x-coordinate.
-     * 
+     *
      * @return x
      */
     public int getX() {
@@ -35,7 +35,7 @@ public class Point {
 
     /**
      * Return the y coordinate.
-     * 
+     *
      * @return y
      */
     public int getY() {
