@@ -12,6 +12,7 @@ public class Point extends Shape {
      * @param y
      */
     private Point(int x, int y) {
+        super();
         this.x = x;
         this.y = y;
     }
@@ -25,6 +26,17 @@ public class Point extends Shape {
      */
     public static Point getOrigin() {
         return new Point(0, 0);
+    }
+
+    /**
+     * Calculate the distance to the origin.
+     *
+     * @param Point
+     */
+    public int length(Point p) {
+        int length;
+        return length = (int) Math.sqrt((p.getX()) * (p.getX()) + p.getY() * p.getY());
+
     }
 
     /**

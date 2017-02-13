@@ -4,6 +4,8 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Graphics2D;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -96,6 +98,26 @@ public class Java2d {
         Segment se1 = new Segment(p16, p17);
         se1.setColor(Color.GREEN);
         paint(se1);
+
+        Point a = Point.of(200, 200);
+        a.setColor(Color.black);
+        Point b = Point.of(200, 100);
+        b.setColor(Color.red);
+        Point c1 = Point.of(300, 130);
+        c.setColor(Color.green);
+        Point d1 = Point.of(300, 150);
+        d.setColor(Color.red);
+        Point e1 = Point.of(21, 0);
+        e.setColor(Color.yellow);
+
+        Set<Point> seP = new HashSet<>();
+        seP.add(a);
+        seP.add(b);
+        seP.add(c1);
+        seP.add(d1);
+        seP.add(e1);
+
+        seP.stream().filter(x -> x.getColor().equals(Color.green)).forEach(x -> paint(x));
 
     }
 

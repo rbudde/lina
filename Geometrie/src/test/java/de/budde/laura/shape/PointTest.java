@@ -45,4 +45,14 @@ public class PointTest {
 
     }
 
+    @Test
+    public void testOriginPointDistance() {
+        Point o = Point.of(3, 3);
+        o.length(o);
+        Assert.assertEquals(4, o.length(o), 0.00001);
+        Point z = Point.of(3, 4);
+        o.length(z);
+        Assert.assertEquals(5, o.length(z), 0.00001);
+    }
+
 }
