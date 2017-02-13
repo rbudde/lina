@@ -24,9 +24,8 @@ public class CollectionsTest {
     public void CollectionsTest1() {
 
         List<Shape> shapeList = new LinkedList<Shape>();
-        shapeList.add(new Point(1, 9));
-        shapeList.add(new Point(18, 9));
-        Shape x = shapeList.iterator().next();
+        shapeList.add(Point.of(1, 9));
+        shapeList.add(Point.of(18, 9));
         for ( Shape shape : shapeList ) {
             System.out.println(shape.toString());
         }

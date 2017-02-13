@@ -10,7 +10,7 @@ public class PointTest {
     @Test
 
     public void testPoint() {
-        Point a = new Point(1, 2);
+        Point a = Point.of(1, 2);
 
         Assert.assertEquals(1, a.getX());
         Assert.assertEquals(2, a.getY());
@@ -18,7 +18,7 @@ public class PointTest {
 
         Assert.assertEquals(2, a.getX());
         Assert.assertEquals(3, a.getY());
-        a.shift(new Point(2, 2));
+        a.shift(Point.of(2, 2));
 
         Assert.assertEquals(4, a.getX());
         Assert.assertEquals(5, a.getY());
@@ -26,8 +26,8 @@ public class PointTest {
 
     @Test
     public void testDistance() {
-        Point a = new Point(2, 2);
-        Point b = new Point(2, 4);
+        Point a = Point.of(2, 2);
+        Point b = Point.of(2, 4);
 
         Assert.assertEquals(2.0, Point.distance(a, b), EPS);
         Assert.assertEquals(2.0, Point.distance(b, a), EPS);
@@ -36,7 +36,7 @@ public class PointTest {
 
     @Test
     public void testOrigin() {
-        Point o = new Point();
+        Point o = Point.getOrigin();
         Assert.assertEquals(0, o.getX());
         Assert.assertEquals(0, o.getY());
         Assert.assertEquals(0.0, Point.distance(o, o), EPS);

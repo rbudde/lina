@@ -6,8 +6,8 @@ import org.junit.Test;
 public class LineTest {
     @Test
     public void testLine() {
-        Point a = new Point(3, 3);
-        Point b = new Point(4, 4);
+        Point a = Point.of(3, 3);
+        Point b = Point.of(4, 4);
         Line g1 = new Line(a, b);
 
         Assert.assertEquals(1.0, g1.getM(), 0.0001);
@@ -23,8 +23,8 @@ public class LineTest {
 
     @Test
     public void testLine2() {
-        Point a = new Point(2, 3);
-        Point b = new Point(4, 4);
+        Point a = Point.of(2, 3);
+        Point b = Point.of(4, 4);
         Line g1 = new Line(a, b);
 
         Assert.assertEquals(0.5, g1.getM(), 0.0001);
@@ -35,8 +35,8 @@ public class LineTest {
 
     @Test
     public void testCalculateX() {
-        Point a = new Point(2, 3);
-        Point b = new Point(4, 4);
+        Point a = Point.of(2, 3);
+        Point b = Point.of(4, 4);
         Line g1 = new Line(a, b);
         System.out.println(g1);
 

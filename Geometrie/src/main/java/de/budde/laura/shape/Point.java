@@ -11,17 +11,20 @@ public class Point extends Shape {
      * @param x
      * @param y
      */
-    public Point(int x, int y) {
+    private Point(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public static Point of(int x, int y) {
+        return new Point(x, y);
     }
 
     /**
      * Create a Point at the origin.
      */
-    public Point() {
-        x = 0;
-        y = 0;
+    public static Point getOrigin() {
+        return new Point(0, 0);
     }
 
     /**
