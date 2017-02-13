@@ -1,5 +1,10 @@
 package de.budde.laura.shape;
 
+import java.awt.Graphics2D;
+
+import de.budde.laura.painter.Painter;
+import de.budde.laura.painter.SegmentPainter;
+
 public class Segment extends Shape {
 
     private Point start;
@@ -50,6 +55,12 @@ public class Segment extends Shape {
     @Override
     public String toString() {
         return "Distance  [start=" + start + ", end=" + end + "]";
+    }
+
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+
+        return new SegmentPainter(g2, this, width, height);
     }
 
 }

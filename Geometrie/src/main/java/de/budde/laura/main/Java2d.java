@@ -52,52 +52,53 @@ public class Java2d {
     private void paintImpl() {
         Line c = new Line(0.0, 400);
         c.setColor(Color.BLUE);
-        paint(c);
+        c.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p1 = Point.of(0, 400);
         Point p2 = Point.of(800, HEIGHT);
         Line d = new Line(p1, p2);
         d.setColor(Color.ORANGE);
-        paint(d);
+        d.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p3 = Point.of(0, 400);
         Point p4 = Point.of(800, 0);
         Line e = new Line(p3, p4);
         e.setColor(Color.RED);
-        paint(e);
+        e.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p5 = Point.of(0, 400);
         Point p6 = Point.of(WIDTH, 600);
         Line f = new Line(p5, p6);
         f.setColor(Color.GREEN);
-        paint(f);
+        f.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p7 = Point.of(200, HEIGHT);
         Point p8 = Point.of(800, 0);
         Line g = new Line(p7, p8);
         g.setColor(Color.YELLOW);
-        paint(g);
+        g.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p9 = Point.of(200, HEIGHT);
         Point p10 = Point.of(WIDTH, 400);
         Line h = new Line(p9, p10);
         h.setColor(Color.PINK);
-        paint(h);
+        h.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p11 = Point.of(200, 0);
         Point p12 = Point.of(800, HEIGHT);
         Line i = new Line(p11, p12);
         i.setColor(Color.MAGENTA);
-        paint(i);
+        i.getPainter(g2, WIDTH, HEIGHT).paint();
         Point p13 = Point.of(200, 0);
         Point p14 = Point.of(WIDTH, 400);
         Line j = new Line(p13, p14);
         j.setColor(Color.GRAY);
-        paint(j);
+        j.getPainter(g2, WIDTH, HEIGHT).paint();
 
         Point p15 = Point.of(200, 350);
         p15.setColor(Color.BLUE);
-        paint(p15);
+        p15.getPainter(g2, WIDTH, HEIGHT).paint();
 
         Point p16 = Point.of(500, 300);
         Point p17 = Point.of(250, 350);
         Segment se1 = new Segment(p16, p17);
         se1.setColor(Color.GREEN);
-        paint(se1);
+        se1.getPainter(g2, WIDTH, HEIGHT).paint();
+        ;
 
         Point a = Point.of(200, 200);
         a.setColor(Color.black);
@@ -117,76 +118,8 @@ public class Java2d {
         seP.add(d1);
         seP.add(e1);
 
-        seP.stream().filter(x -> x.getColor().equals(Color.green)).forEach(x -> paint(x));
+        seP.stream().filter(x -> x.getColor().equals(Color.green)).forEach(x -> x.getPainter(g2, WIDTH, HEIGHT).paint());
 
-    }
-
-    private void paint(Line l1) {
-        g2.setColor(l1.getColor());
-        if ( l1.getM() == 0 && l1.getN() <= HEIGHT && l1.getN() >= 0 ) {
-            g2.drawLine(0, HEIGHT - l1.calculateY(0), WIDTH, HEIGHT - l1.calculateY(WIDTH));
-
-        } else {
-            if ( l1.calculateY(0) <= HEIGHT && l1.calculateY(0) >= 0 ) {
-                if ( l1.calculateY(WIDTH) >= HEIGHT ) {
-
-                    g2.drawLine(0, HEIGHT - l1.calculateY(0), l1.calculateX(HEIGHT), HEIGHT - HEIGHT);
-                } else {
-                    if ( l1.calculateY(WIDTH) <= 0 ) {
-                        g2.drawLine(0, HEIGHT - l1.calculateY(0), l1.calculateX(0), HEIGHT - 0);
-                    } else {
-                        g2.drawLine(0, HEIGHT - l1.calculateY(0), WIDTH, HEIGHT - l1.calculateY(WIDTH));
-                    }
-
-                }
-            } else {
-                if ( l1.calculateY(0) >= HEIGHT ) {
-                    if ( l1.calculateY(WIDTH) <= 0 ) {
-                        g2.drawLine(l1.calculateX(HEIGHT), HEIGHT - HEIGHT, l1.calculateX(0), HEIGHT - 0);
-                    } else {
-                        g2.drawLine(l1.calculateX(HEIGHT), HEIGHT - HEIGHT, WIDTH, HEIGHT - l1.calculateY(WIDTH));
-                    }
-
-                } else {
-                    if ( l1.calculateY(0) <= HEIGHT ) {
-                        if ( l1.calculateY(WIDTH) >= HEIGHT ) {
-                            g2.drawLine(l1.calculateX(0), HEIGHT - 0, l1.calculateY(HEIGHT), HEIGHT - HEIGHT);
-                        } else {
-                            g2.drawLine(l1.calculateX(0), HEIGHT - 0, WIDTH, HEIGHT - l1.calculateY(WIDTH));
-
-                        }
-                    }
-                }
-            }
-        }
-
-    }
-
-    private void paint(Point p1) {
-        g2.setColor(p1.getColor());
-        if ( isValid2DPoint(p1) ) {
-
-            g2.drawLine(p1.getX(), HEIGHT - p1.getY(), p1.getX(), HEIGHT - p1.getY());
-
-        } else {
-            System.out.println("Punkt ungültig:" + p1);
-        }
-    }
-
-    private void paint(Segment st) {
-        g2.setColor(st.getColor());
-        Point start = st.getStart();
-        Point end = st.getEnd();
-        if ( isValid2DPoint(start) && isValid2DPoint(end) ) {
-            g2.drawLine(start.getX(), HEIGHT - start.getY(), end.getX(), HEIGHT - end.getY());
-
-        } else {
-            System.out.println("Punkte ungültig:" + st);
-        }
-    }
-
-    private static boolean isValid2DPoint(Point pk) {
-        return pk.getX() <= WIDTH && pk.getY() <= HEIGHT && pk.getX() >= 0 && pk.getY() >= 0;
     }
 
     public static void main(String[] args) {

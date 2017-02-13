@@ -1,5 +1,10 @@
 package de.budde.laura.shape;
 
+import java.awt.Graphics2D;
+
+import de.budde.laura.painter.Painter;
+import de.budde.laura.painter.PointPainter;
+
 public class Point extends Shape {
 
     private int x;
@@ -103,6 +108,12 @@ public class Point extends Shape {
     @Override
     public String toString() {
         return "Point [x=" + x + ", y=" + y + "]";
+    }
+
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+
+        return new PointPainter(g2, this, width, height);
     }
 
 }

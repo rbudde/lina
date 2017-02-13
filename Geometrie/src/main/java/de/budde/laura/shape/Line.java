@@ -1,5 +1,10 @@
 package de.budde.laura.shape;
 
+import java.awt.Graphics2D;
+
+import de.budde.laura.painter.LinePainter;
+import de.budde.laura.painter.Painter;
+
 public class Line extends Shape {
     // y=mx+n
 
@@ -69,6 +74,12 @@ public class Line extends Shape {
     @Override
     public String toString() {
         return "Gerade [m=" + m + ", n=" + n + "]";
+    }
+
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+
+        return new LinePainter(g2, this, width, height);
     }
 
 }

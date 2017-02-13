@@ -1,8 +1,11 @@
 package de.budde.laura.shape;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
-public class Shape {
+import de.budde.laura.painter.Painter;
+
+public abstract class Shape {
     private static int counter = 0;
     private Color c = Color.BLACK;
     private int identity;
@@ -11,6 +14,8 @@ public class Shape {
         identity = counter++;
 
     }
+
+    public abstract Painter getPainter(Graphics2D g2, int width, int height);
 
     public int getIdentity() {
         return identity;
