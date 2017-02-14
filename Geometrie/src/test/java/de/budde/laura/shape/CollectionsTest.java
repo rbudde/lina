@@ -24,11 +24,14 @@ public class CollectionsTest {
         System.out.println(Stringarray[0]);
 
         double tab[][] = new double[5][3];//Tabelle mit Elementen vom Typ double mit 5 Zeilen und 3 Spalten
-        tab[1][1] = 1.0;
-        Assert.assertEquals(1.0, tab[1][1], 0.0001);
+        tab[1][1] = 3.0;
+        Assert.assertEquals(3.0, tab[1][1], 0.0001);
 
     }
 
+    /* LinkedList wird als doppelt verkettete Liste implementiert. Jedes Element (außer Ränder)
+     * hat einen Vorgänger und Nachfolger.
+    */
     @Test
     public void CollectionsTest1() {
 
@@ -41,6 +44,10 @@ public class CollectionsTest {
         shapeList.stream().forEach(shape -> System.out.println(shape));
 
     }
+
+    /* Set is a Collection that cannot contain duplicate elements.
+     *A Hash set is an unsorted Set.
+     * */
 
     @Test
     public void CollectionsTest3() {
@@ -56,6 +63,10 @@ public class CollectionsTest {
         shapeS.stream().forEach(shape -> System.out.println(shape));
 
     }
+    /* Jedes Exemplar der ArrayList vertritt ein Array mit unterschieddlicher Länge.
+     * (ohne beso. Angaben: Array mit einer Capazität von 10)
+     *
+     */
 
     @Test
     public void CollectionsTest2() {
