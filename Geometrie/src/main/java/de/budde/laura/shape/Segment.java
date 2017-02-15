@@ -17,10 +17,15 @@ public class Segment extends Shape {
      * @param p1 The Point where the Segment starts.
      * @param p2 The Point where the Segment ends.
      */
-    public Segment(Point p1, Point p2) {
+    private Segment(Point p1, Point p2) {
         start = p1;
         end = p2;
 
+    }
+
+    public static Segment of(Point p1, Point p2) {
+
+        return new Segment(p1, p2);
     }
 
     /**
@@ -80,6 +85,19 @@ public class Segment extends Shape {
         start = Point.of(a, b);
         end = Point.of(c, d);
 
+    }
+
+    @Override
+    public Shape clone(int x, int y) {
+
+        int a = start.getX() + x;
+        int b = start.getY() + y;
+        int c = end.getX() + x;
+        int d = end.getY() + y;
+        start = Point.of(a, b);
+        end = Point.of(c, d);
+
+        return new Segment(start, end);
     }
 
 }

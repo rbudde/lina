@@ -17,19 +17,29 @@ public class Line extends Shape {
      * @param pk1
      * @param pk2
      */
-    public Line(Point pk1, Point pk2) {
-        m = (double) (pk1.getY() - pk2.getY()) / (double) (pk1.getX() - pk2.getX());
-        n = (int) (pk1.getY() - (m * pk1.getX()));
+    private Line(Point pk1, Point pk2) {
+        this.m = (double) (pk1.getY() - pk2.getY()) / (double) (pk1.getX() - pk2.getX());
+        this.n = (int) (pk1.getY() - (this.m * pk1.getX()));
+    }
+
+    public static Line of(Point pk1, Point pk2) {
+
+        return new Line(pk1, pk2);
     }
 
     /**
      * Create a Line by using a Point and the gradient.
      */
 
-    public Line(Point pk1, int m) {
+    private Line(Point pk1, int m) {
 
         this.m = m;
-        n = pk1.getY() - (m * pk1.getX());
+        this.n = pk1.getY() - (m * pk1.getX());
+    }
+
+    public static Line of(Point pk1, int m) {
+
+        return new Line(pk1, m);
     }
 
     /**
@@ -38,9 +48,14 @@ public class Line extends Shape {
      * @param m The gradient.
      * @param n The y-intercept.
      */
-    public Line(double m, int n) {
+    private Line(double m, int n) {
         this.m = m;
         this.n = n;
+    }
+
+    public static Line of(double m, int n) {
+
+        return new Line(m, n);
     }
 
     /**
@@ -50,7 +65,7 @@ public class Line extends Shape {
      * @return The function value.
      */
     public int calculateY(int x) {
-        return (int) (m * x + n);
+        return (int) (this.m * x + this.n);
     }
 
     /**
@@ -60,7 +75,7 @@ public class Line extends Shape {
      * @return X.
      */
     public int calculateX(int y) {
-        return (int) ((y - n) / m);
+        return (int) ((y - this.n) / this.m);
     }
 
     /**
@@ -69,7 +84,7 @@ public class Line extends Shape {
      * @return The gradient.
      */
     public double getM() {
-        return m;
+        return this.m;
     }
 
     /**
@@ -78,25 +93,34 @@ public class Line extends Shape {
      * @return The y-intercept.
      */
     public int getN() {
-        return n;
+        return this.n;
     }
 
     @Override
     public void move(int x, int y) {
 
-        n = (int) (x - (m * y));
+        this.n = (int) (y + this.n - (this.m * x));
 
     }
 
     @Override
     public String toString() {
-        return "Gerade [m=" + m + ", n=" + n + "]";
+        return "Gerade [m=" + this.m + ", n=" + this.n + "]";
     }
 
     @Override
     public Painter getPainter(Graphics2D g2, int width, int height) {
 
         return new LinePainter(g2, this, width, height);
+    }
+
+    @Override
+    public Shape clone(int x, int y) {
+        int n = (int) (y + this.n - (this.m * x));
+
+        Line newLine = new Line(this.m, n);
+        newLine.setColor(getColor());
+        return newLine;
     }
 
 }

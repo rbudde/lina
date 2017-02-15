@@ -183,8 +183,8 @@ public class CollectionsTest {
         Set<Shape> shapeS = new TreeSet<Shape>(sc);
         Point p1 = Point.of(1, 0);
         Point p2 = Point.of(4, 0);
-        Shape l1 = new Line(2, 0);
-        Shape s1 = new Segment(p1, p2);
+        Shape l1 = Line.of(2, 0);
+        Shape s1 = Segment.of(p1, p2);
 
         shapeS.add(s1);
         shapeS.add(l1);

@@ -55,4 +55,15 @@ public class PointTest {
         Assert.assertEquals(5, o.length(z), 0.00001);
     }
 
+    @Test
+    public void testCloning() {
+        Point b;
+        Point a = Point.of(1, 1);
+        System.out.println(a);
+        System.out.println(a.clone(2, 2));
+        System.out.println(a);
+        b = (Point) a.clone(2, 2);
+        System.out.println(b);
+
+    }
 }

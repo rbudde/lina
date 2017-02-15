@@ -107,4 +107,13 @@ public class Point extends Shape {
         return new PointPainter(g2, this, width, height);
     }
 
+    @Override
+    public Shape clone(int x, int y) {
+
+        int a = this.x + x;
+        int b = this.y + y;
+
+        return Point.of(a, b);
+    }
+
 }

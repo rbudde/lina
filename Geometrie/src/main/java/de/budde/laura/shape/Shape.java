@@ -41,4 +41,6 @@ public abstract class Shape {
         move(p.getX(), p.getY());
     }
 
+    public abstract Shape clone(int x, int y);
+
 }

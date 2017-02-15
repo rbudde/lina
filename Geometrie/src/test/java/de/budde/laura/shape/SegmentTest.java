@@ -9,7 +9,7 @@ public class SegmentTest {
     public void testSegments() {
         Point a = Point.of(2, 2);
         Point b = Point.of(2, 4);
-        Segment se = new Segment(a, b);
+        Segment se = Segment.of(a, b);
         Assert.assertEquals(a, se.getStart());
         Assert.assertEquals(b, se.getEnd());
     }
@@ -18,13 +18,13 @@ public class SegmentTest {
     public void testDistance() {
         Point a = Point.of(2, 2);
         Point b = Point.of(2, 4);
-        Segment st = new Segment(a, b);
+        Segment st = Segment.of(a, b);
 
         Assert.assertEquals(2.0, st.getLength(), 0.000001);
 
         Point c = Point.of(0, 0);
         Point d = Point.of(0, 0);
-        Segment se = new Segment(c, d);
+        Segment se = Segment.of(c, d);
         Assert.assertEquals(0.0, se.getLength(), 0.000001);
     }
 
@@ -32,11 +32,22 @@ public class SegmentTest {
     public void testMoveMethod() {
         Point a = Point.of(2, 2);
         Point b = Point.of(2, 4);
-        Segment st = new Segment(a, b);
+        Segment st = Segment.of(a, b);
         System.out.println(st);
         st.move(2, 5);
         System.out.println(st);
 
     }
 
+    @Test
+    public void testCloning() {
+        Segment s2;
+        Point a = Point.of(2, 2);
+        Point b = Point.of(2, 4);
+        Segment s1 = Segment.of(a, b);
+        System.out.println(s1);
+        s2 = (Segment) s1.clone(3, 3);
+        System.out.println(s2);
+
+    }
 }
