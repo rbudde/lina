@@ -18,7 +18,7 @@ public class PointTest {
 
         Assert.assertEquals(2, a.getX());
         Assert.assertEquals(3, a.getY());
-        a.shift(Point.of(2, 2));
+        a.move(Point.of(2, 2));
 
         Assert.assertEquals(4, a.getX());
         Assert.assertEquals(5, a.getY());

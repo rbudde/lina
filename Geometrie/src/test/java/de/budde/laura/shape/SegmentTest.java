@@ -28,4 +28,15 @@ public class SegmentTest {
         Assert.assertEquals(0.0, se.getLength(), 0.000001);
     }
 
+    @Test
+    public void testMoveMethod() {
+        Point a = Point.of(2, 2);
+        Point b = Point.of(2, 4);
+        Segment st = new Segment(a, b);
+        System.out.println(st);
+        st.move(2, 5);
+        System.out.println(st);
+
+    }
+
 }

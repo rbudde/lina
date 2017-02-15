@@ -23,6 +23,16 @@ public class Line extends Shape {
     }
 
     /**
+     * Create a Line by using a Point and the gradient.
+     */
+
+    public Line(Point pk1, int m) {
+
+        this.m = m;
+        n = pk1.getY() - (m * pk1.getX());
+    }
+
+    /**
      * Create a Line by using the y-intercept and the gradient.
      *
      * @param m The gradient.
@@ -69,6 +79,13 @@ public class Line extends Shape {
      */
     public int getN() {
         return n;
+    }
+
+    @Override
+    public void move(int x, int y) {
+
+        n = (int) (x - (m * y));
+
     }
 
     @Override

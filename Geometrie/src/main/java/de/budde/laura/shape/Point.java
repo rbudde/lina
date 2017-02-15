@@ -68,20 +68,11 @@ public class Point extends Shape {
      * @param x
      * @param y
      */
+    @Override
     public void move(int x, int y) {
         this.x = this.x + x;
         this.y = this.y + y;
 
-    }
-
-    /**
-     * Shift this Point by adding the coordinates
-     * of another Point.
-     *
-     * @param p The Point to be added.
-     */
-    public void shift(Point p) {
-        move(p.getX(), p.getY());
     }
 
     public void print() {

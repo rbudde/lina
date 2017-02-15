@@ -51,4 +51,31 @@ public class LineTest {
 
     }
 
+    @Test
+    public void moveMethod() {
+
+        Line g1 = new Line(0, 2);
+        System.out.println(g1);
+        g1.move(3, 3);
+        System.out.println(g1);
+
+        Point a = Point.of(2, 3);
+        Point b = Point.of(4, 4);
+        Line k1 = new Line(a, b);
+        System.out.println(k1);
+        k1.move(10, 10);
+        System.out.println(k1);
+
+    }
+
+    @Test
+    public void constructorTest() {
+        int m;
+        Point a = Point.of(2, 2);
+        m = 0;
+        Line l1 = new Line(a, 0);
+        Assert.assertEquals(2, l1.getN());
+
+    }
+
 }

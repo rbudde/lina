@@ -63,4 +63,23 @@ public class Segment extends Shape {
         return new SegmentPainter(g2, this, width, height);
     }
 
+    /**
+     * Moves the Segment by adding the coordinates of a Point.
+     */
+
+    @Override
+    public void move(int x, int y) {
+        int a;
+        int b;
+        int c;
+        int d;
+        a = start.getX() + x;
+        b = start.getY() + y;
+        c = end.getX() + x;
+        d = end.getY() + y;
+        start = Point.of(a, b);
+        end = Point.of(c, d);
+
+    }
+
 }

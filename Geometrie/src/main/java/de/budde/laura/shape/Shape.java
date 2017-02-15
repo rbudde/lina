@@ -29,4 +29,16 @@ public abstract class Shape {
         return c;
     }
 
+    public abstract void move(int x, int y);
+
+    /**
+     * Shift this Point by adding the coordinates
+     * of another Point.
+     *
+     * @param p The Point to be added.
+     */
+    public void move(Point p) {
+        move(p.getX(), p.getY());
+    }
+
 }
