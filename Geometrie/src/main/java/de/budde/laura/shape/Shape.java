@@ -3,9 +3,13 @@ package de.budde.laura.shape;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.budde.laura.painter.Painter;
 
 public abstract class Shape {
+    private static final Logger LOG = LoggerFactory.getLogger(Shape.class);
     private static int counter = 0;
     private final Color c;
     private final int identity;
@@ -13,7 +17,7 @@ public abstract class Shape {
     protected Shape(Color c) {
         this.identity = counter++;
         this.c = c;
-
+        LOG.info("Shape " + this.identity + " created");
     }
 
     public abstract Painter getPainter(Graphics2D g2, int width, int height);

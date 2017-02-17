@@ -1,0 +1,25 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{HH:mm:ss}] [%logger] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="REPORTING" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>{"AT":"%d{yyyy-MM-dd HH:mm:ss}",%msg}%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="REPORTING" level="INFO">
+        <appender-ref ref="REPORTING" />
+    </logger>
+    
+    <logger name="ch.qos.logback" level="ERROR" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="INFO">        
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
