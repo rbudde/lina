@@ -1,5 +1,6 @@
 package de.budde.laura.shape;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import de.budde.laura.painter.Painter;
@@ -17,15 +18,21 @@ public class Segment extends Shape {
      * @param p1 The Point where the Segment starts.
      * @param p2 The Point where the Segment ends.
      */
-    private Segment(Point p1, Point p2) {
-        start = p1;
-        end = p2;
+    private Segment(Point p1, Point p2, Color c) {
+        super(c);
+        this.start = p1;
+        this.end = p2;
 
+    }
+
+    public static Segment of(Point p1, Point p2, Color c) {
+
+        return new Segment(p1, p2, c);
     }
 
     public static Segment of(Point p1, Point p2) {
 
-        return new Segment(p1, p2);
+        return new Segment(p1, p2, Color.BLUE);
     }
 
     /**
@@ -34,7 +41,7 @@ public class Segment extends Shape {
      * @return start Point
      */
     public Point getStart() {
-        return start;
+        return this.start;
     }
 
     /**
@@ -43,7 +50,7 @@ public class Segment extends Shape {
      * @return end Point
      */
     public Point getEnd() {
-        return end;
+        return this.end;
     }
 
     /**
@@ -54,12 +61,12 @@ public class Segment extends Shape {
      * @return The distance.
      */
     public double getLength() {
-        return Point.distance(start, end);
+        return Point.distance(this.start, this.end);
     }
 
     @Override
     public String toString() {
-        return "Distance  [start=" + start + ", end=" + end + "]";
+        return "Distance  [start=" + this.start + ", end=" + this.end + "]";
     }
 
     @Override
@@ -68,36 +75,17 @@ public class Segment extends Shape {
         return new SegmentPainter(g2, this, width, height);
     }
 
-    /**
-     * Moves the Segment by adding the coordinates of a Point.
-     */
-
     @Override
-    public void move(int x, int y) {
-        int a;
-        int b;
-        int c;
-        int d;
-        a = start.getX() + x;
-        b = start.getY() + y;
-        c = end.getX() + x;
-        d = end.getY() + y;
-        start = Point.of(a, b);
-        end = Point.of(c, d);
+    public Shape move(int x, int y) {
 
-    }
+        int a = this.start.getX() + x;
+        int b = this.start.getY() + y;
+        int c = this.end.getX() + x;
+        int d = this.end.getY() + y;
+        Point newstart = Point.of(a, b);
+        Point newend = Point.of(c, d);
 
-    @Override
-    public Shape clone(int x, int y) {
-
-        int a = start.getX() + x;
-        int b = start.getY() + y;
-        int c = end.getX() + x;
-        int d = end.getY() + y;
-        start = Point.of(a, b);
-        end = Point.of(c, d);
-
-        return new Segment(start, end);
+        return new Segment(newstart, newend, this.getColor());
     }
 
 }

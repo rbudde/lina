@@ -7,40 +7,44 @@ import de.budde.laura.painter.Painter;
 
 public abstract class Shape {
     private static int counter = 0;
-    private Color c = Color.BLACK;
-    private int identity;
+    private final Color c;
+    private final int identity;
 
-    protected Shape() {
-        identity = counter++;
+    protected Shape(Color c) {
+        this.identity = counter++;
+        this.c = c;
 
     }
 
     public abstract Painter getPainter(Graphics2D g2, int width, int height);
 
     public int getIdentity() {
-        return identity;
-    }
-
-    public void setColor(Color c) {
-        this.c = c;
+        return this.identity;
     }
 
     public Color getColor() {
-        return c;
+        return this.c;
     }
-
-    public abstract void move(int x, int y);
 
     /**
-     * Shift this Point by adding the coordinates
-     * of another Point.
+     * Moves the object by X and Y.
+     * A new Shape object is created.
      *
-     * @param p The Point to be added.
+     * @param x
+     * @param y
+     * @return a shifted new Shape object
      */
-    public void move(Point p) {
-        move(p.getX(), p.getY());
-    }
+    public abstract Shape move(int x, int y);
 
-    public abstract Shape clone(int x, int y);
+    /**
+     * Moves the object by adding the coordinates of Point p.
+     * A new Shape object is created.
+     *
+     * @param p
+     * @return The new moved Point
+     */
+    public Shape move(Point p) {
+        return this.move(p.getX(), p.getY());
+    }
 
 }

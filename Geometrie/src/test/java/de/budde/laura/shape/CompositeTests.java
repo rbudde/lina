@@ -11,7 +11,7 @@ public class CompositeTests {
         Point b = Point.of(2, 2);
         Segment s1 = Segment.of(a, b);
         Line l1 = Line.of(a, b);
-        Circle c1= Circle.of(a, 10);
+        Circle c1 = Circle.of(a, 10);
 
         Composite c = new Composite();
         c.addShape(a);
@@ -19,7 +19,7 @@ public class CompositeTests {
         c.addShape(l1);
         c.addShape(c1);
         c.printShapes();
-        c.move(2, 3);
+        c = (Composite) c.move(2, 3);
         c.printShapes();
 
     }

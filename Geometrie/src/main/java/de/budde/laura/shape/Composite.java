@@ -1,5 +1,6 @@
 package de.budde.laura.shape;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +8,12 @@ import java.util.List;
 import de.budde.laura.painter.Painter;
 
 public class Composite extends Shape {
-    Shape shapes;
+
     private List<Shape> shapesList = new ArrayList<>();
+
+    public Composite() {
+        super(Color.YELLOW);
+    }
 
     public void addShape(Shape... s) {
         for ( Shape shape : s ) {
@@ -40,16 +45,10 @@ public class Composite extends Shape {
     }
 
     @Override
-    public void move(int x, int y) {
-
-        this.shapesList.stream().forEach(s -> s.move(x, y));
-    }
-
-    @Override
-    public Shape clone(int x, int y) {
+    public Shape move(int x, int y) {
         Composite s = new Composite();
         for ( Shape shape : this.shapesList ) {
-            s.addShape(shape.clone(x, y));
+            s.addShape(shape.move(x, y));
         }
         return s;
     }

@@ -14,11 +14,11 @@ public class PointTest {
 
         Assert.assertEquals(1, a.getX());
         Assert.assertEquals(2, a.getY());
-        a.move(1, 1);
+        a = (Point) a.move(1, 1);
 
         Assert.assertEquals(2, a.getX());
         Assert.assertEquals(3, a.getY());
-        a.move(Point.of(2, 2));
+        a = (Point) a.move(2, 2);
 
         Assert.assertEquals(4, a.getX());
         Assert.assertEquals(5, a.getY());
@@ -40,7 +40,7 @@ public class PointTest {
         Assert.assertEquals(0, o.getX());
         Assert.assertEquals(0, o.getY());
         Assert.assertEquals(0.0, Point.distance(o, o), EPS);
-        o.move(1, 1);
+        o = (Point) o.move(1, 1);
         o.print();
 
     }
@@ -60,9 +60,9 @@ public class PointTest {
         Point b;
         Point a = Point.of(1, 1);
         System.out.println(a);
-        System.out.println(a.clone(2, 2));
+        System.out.println(a.move(2, 2));
         System.out.println(a);
-        b = (Point) a.clone(2, 2);
+        b = (Point) a.move(2, 2);
         System.out.println(b);
 
     }

@@ -1,5 +1,6 @@
 package de.budde.laura.shape;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import de.budde.laura.painter.CirclePainter;
@@ -9,7 +10,8 @@ public class Circle extends Shape {
     private Point center;
     private int radius;
 
-    private Circle(Point center, int radius) {
+    private Circle(Point center, int radius, Color c) {
+        super(c);
         this.center = center;
         this.radius = radius;
 
@@ -17,13 +19,18 @@ public class Circle extends Shape {
 
     /**
      * Create a Circle by using the radius and the center coordinates.
-     * 
+     *
      * @param center
      * @param radius
      * @return
      */
+    public static Circle of(Point center, int radius, Color c) {
+        return new Circle(center, radius, c);
+
+    }
+
     public static Circle of(Point center, int radius) {
-        return new Circle(center, radius);
+        return new Circle(center, radius, Color.YELLOW);
 
     }
 
@@ -33,31 +40,16 @@ public class Circle extends Shape {
         return new CirclePainter(g2, this, width, height);
     }
 
-    /**
-     * Move the Circle by adding coordinates the center Point.
-     * 
-     * @param X and Y coordinates.
-     */
     @Override
-    public void move(int x, int y) {
-        this.center.move(x, y);
-    }
+    public Shape move(int x, int y) {
+        Point clonedCenter = (Point) this.center.move(x, y);
 
-    /**
-     * Clone the circle.
-     * There'll be the old and the new Circle, which is moved by adding the
-     * X and Y coordinates.
-     */
-    @Override
-    public Shape clone(int x, int y) {
-        Point clonedCenter = (Point) this.center.clone(x, y);
-
-        return new Circle(clonedCenter, this.radius);
+        return new Circle(clonedCenter, this.radius, this.getColor());
     }
 
     /**
      * Get the center.
-     * 
+     *
      * @return center
      */
     public Point getCenter() {
@@ -66,7 +58,7 @@ public class Circle extends Shape {
 
     /**
      * Get the radius-
-     * 
+     *
      * @return radius
      */
     public int getRadius() {

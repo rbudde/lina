@@ -199,16 +199,11 @@ public class CollectionsTest {
 
     @Test
     public void CollectionsTest9() {
-        Point a = Point.of(2, 0);
-        a.setColor(Color.black);
-        Point b = Point.of(6, 0);
-        b.setColor(Color.red);
-        Point c = Point.of(9, 0);
-        c.setColor(Color.green);
-        Point d = Point.of(3, 0);
-        d.setColor(Color.red);
-        Point e = Point.of(21, 0);
-        e.setColor(Color.yellow);
+        Point a = Point.of(2, 0, Color.black);
+        Point b = Point.of(6, 0, Color.red);
+        Point c = Point.of(9, 0, Color.green);
+        Point d = Point.of(3, 0, Color.red);
+        Point e = Point.of(21, 0, Color.yellow);
 
         Set<Point> seP = new HashSet<>();
         seP.add(a);

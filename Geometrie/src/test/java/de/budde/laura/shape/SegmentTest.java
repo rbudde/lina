@@ -34,7 +34,7 @@ public class SegmentTest {
         Point b = Point.of(2, 4);
         Segment st = Segment.of(a, b);
         System.out.println(st);
-        st.move(2, 5);
+        st = (Segment) st.move(2, 5);
         System.out.println(st);
 
     }
@@ -46,7 +46,7 @@ public class SegmentTest {
         Point b = Point.of(2, 4);
         Segment s1 = Segment.of(a, b);
         System.out.println(s1);
-        s2 = (Segment) s1.clone(3, 3);
+        s2 = (Segment) s1.move(3, 3);
         System.out.println(s2);
 
     }

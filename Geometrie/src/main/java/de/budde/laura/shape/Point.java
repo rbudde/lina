@@ -1,5 +1,6 @@
 package de.budde.laura.shape;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import de.budde.laura.painter.Painter;
@@ -16,21 +17,25 @@ public class Point extends Shape {
      * @param x
      * @param y
      */
-    private Point(int x, int y) {
-        super();
+    private Point(int x, int y, Color c) {
+        super(c);
         this.x = x;
         this.y = y;
     }
 
+    public static Point of(int x, int y, Color c) {
+        return new Point(x, y, c);
+    }
+
     public static Point of(int x, int y) {
-        return new Point(x, y);
+        return new Point(x, y, Color.BLACK);
     }
 
     /**
      * Create a Point at the origin.
      */
     public static Point getOrigin() {
-        return new Point(0, 0);
+        return new Point(0, 0, Color.BLACK);
     }
 
     /**
@@ -60,19 +65,6 @@ public class Point extends Shape {
      */
     public int getY() {
         return this.y;
-    }
-
-    /**
-     * Shift this Point by adding coordinates.
-     *
-     * @param x
-     * @param y
-     */
-    @Override
-    public void move(int x, int y) {
-        this.x = this.x + x;
-        this.y = this.y + y;
-
     }
 
     public void print() {
@@ -107,17 +99,13 @@ public class Point extends Shape {
         return new PointPainter(g2, this, width, height);
     }
 
-    /**
-     * Clone a Point. There'll be two Points.
-     * The new Point will be shifted by adding the X and Y coordinates.
-     */
     @Override
-    public Shape clone(int x, int y) {
+    public Shape move(int x, int y) {
 
         int a = this.x + x;
         int b = this.y + y;
 
-        return Point.of(a, b);
+        return Point.of(a, b, this.getColor());
     }
 
 }

@@ -1,5 +1,6 @@
 package de.budde.laura.shape;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import de.budde.laura.painter.LinePainter;
@@ -17,29 +18,20 @@ public class Line extends Shape {
      * @param pk1
      * @param pk2
      */
-    private Line(Point pk1, Point pk2) {
+    private Line(Point pk1, Point pk2, Color c) {
+        super(c);
         this.m = (double) (pk1.getY() - pk2.getY()) / (double) (pk1.getX() - pk2.getX());
         this.n = (int) (pk1.getY() - (this.m * pk1.getX()));
-    }
-
-    public static Line of(Point pk1, Point pk2) {
-
-        return new Line(pk1, pk2);
     }
 
     /**
      * Create a Line by using a Point and the gradient.
      */
 
-    private Line(Point pk1, int m) {
-
+    private Line(Point pk1, int m, Color c) {
+        super(c);
         this.m = m;
         this.n = pk1.getY() - (m * pk1.getX());
-    }
-
-    public static Line of(Point pk1, int m) {
-
-        return new Line(pk1, m);
     }
 
     /**
@@ -48,14 +40,40 @@ public class Line extends Shape {
      * @param m The gradient.
      * @param n The y-intercept.
      */
-    private Line(double m, int n) {
+    private Line(double m, int n, Color c) {
+        super(c);
         this.m = m;
         this.n = n;
     }
 
+    public static Line of(Point pk1, Point pk2, Color c) {
+
+        return new Line(pk1, pk2, c);
+    }
+
+    public static Line of(Point pk1, Point pk2) {
+
+        return new Line(pk1, pk2, Color.DARK_GRAY);
+    }
+
+    public static Line of(Point pk1, int m, Color c) {
+
+        return new Line(pk1, m, c);
+    }
+
+    public static Line of(Point pk1, int m) {
+
+        return new Line(pk1, m, Color.DARK_GRAY);
+    }
+
+    public static Line of(double m, int n, Color c) {
+
+        return new Line(m, n, c);
+    }
+
     public static Line of(double m, int n) {
 
-        return new Line(m, n);
+        return new Line(m, n, Color.DARK_GRAY);
     }
 
     /**
@@ -97,13 +115,6 @@ public class Line extends Shape {
     }
 
     @Override
-    public void move(int x, int y) {
-
-        this.n = (int) (y + this.n - (this.m * x));
-
-    }
-
-    @Override
     public String toString() {
         return "Gerade [m=" + this.m + ", n=" + this.n + "]";
     }
@@ -115,11 +126,11 @@ public class Line extends Shape {
     }
 
     @Override
-    public Shape clone(int x, int y) {
+    public Shape move(int x, int y) {
         int n = (int) (y + this.n - (this.m * x));
 
-        Line newLine = new Line(this.m, n);
-        newLine.setColor(getColor());
+        Line newLine = new Line(this.m, n, this.getColor());
+
         return newLine;
     }
 

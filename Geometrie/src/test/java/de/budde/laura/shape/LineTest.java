@@ -56,14 +56,14 @@ public class LineTest {
 
         Line g1 = Line.of(0, 2);
         System.out.println(g1);
-        g1.move(3, 3);
+        g1 = (Line) g1.move(3, 3);
         System.out.println(g1);
 
         Point a = Point.of(2, 3);
         Point b = Point.of(4, 4);
         Line k1 = Line.of(a, b);
         System.out.println(k1);
-        k1.move(10, 10);
+        k1 = (Line) k1.move(10, 10);
         System.out.println(k1);
 
     }
@@ -83,8 +83,8 @@ public class LineTest {
         Point p11 = Point.of(200, 0);
         Point p12 = Point.of(800, 600);
         Line i = Line.of(p11, p12);
-        Line j1 = (Line) i.clone(300, 200);
-        Line j2 = (Line) i.clone(40, 100);
+        Line j1 = (Line) i.move(300, 200);
+        Line j2 = (Line) i.move(40, 100);
         Assert.assertEquals(i.getM(), j1.getM(), 0.0001);
         Assert.assertEquals(i.getM(), j2.getM(), 0.0001);
         System.out.println("" + i + j1);
