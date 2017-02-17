@@ -46,7 +46,6 @@ public class Point extends Shape {
     public int length(Point p) {
         int length;
         return length = (int) Math.sqrt((p.getX()) * (p.getX()) + p.getY() * p.getY());
-
     }
 
     /**
@@ -67,8 +66,21 @@ public class Point extends Shape {
         return this.y;
     }
 
-    public void print() {
-        System.out.println(this.toString());
+    @Override
+    public Shape move(int x, int y) {
+        int a = this.x + x;
+        int b = this.y + y;
+        return Point.of(a, b, this.getColor());
+    }
+
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+        return new PointPainter(g2, this, width, height);
+    }
+
+    @Override
+    public String toString() {
+        return "Point [x=" + this.x + ", y=" + this.y + "]";
     }
 
     /**
@@ -79,33 +91,10 @@ public class Point extends Shape {
      * @return The distance.
      */
     public static double distance(Point p1, Point p2) {
-
         int x = p1.getX() - p2.getX();
         int y = p1.getY() - p2.getY();
         double dist = Math.sqrt(x * x + y * y);
-
         return dist;
-
-    }
-
-    @Override
-    public String toString() {
-        return "Point [x=" + this.x + ", y=" + this.y + "]";
-    }
-
-    @Override
-    public Painter getPainter(Graphics2D g2, int width, int height) {
-
-        return new PointPainter(g2, this, width, height);
-    }
-
-    @Override
-    public Shape move(int x, int y) {
-
-        int a = this.x + x;
-        int b = this.y + y;
-
-        return Point.of(a, b, this.getColor());
     }
 
 }

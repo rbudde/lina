@@ -8,9 +8,8 @@ import de.budde.laura.painter.Painter;
 
 public class Line extends Shape {
     // y=mx+n
-
-    private double m;
-    private int n;
+    private final double m;
+    private final int n;
 
     /**
      * Create a Line by using two Points.
@@ -47,32 +46,26 @@ public class Line extends Shape {
     }
 
     public static Line of(Point pk1, Point pk2, Color c) {
-
         return new Line(pk1, pk2, c);
     }
 
     public static Line of(Point pk1, Point pk2) {
-
         return new Line(pk1, pk2, Color.DARK_GRAY);
     }
 
     public static Line of(Point pk1, int m, Color c) {
-
         return new Line(pk1, m, c);
     }
 
     public static Line of(Point pk1, int m) {
-
         return new Line(pk1, m, Color.DARK_GRAY);
     }
 
     public static Line of(double m, int n, Color c) {
-
         return new Line(m, n, c);
     }
 
     public static Line of(double m, int n) {
-
         return new Line(m, n, Color.DARK_GRAY);
     }
 
@@ -115,8 +108,10 @@ public class Line extends Shape {
     }
 
     @Override
-    public String toString() {
-        return "Gerade [m=" + this.m + ", n=" + this.n + "]";
+    public Shape move(int x, int y) {
+        int n = (int) (y + this.n - (this.m * x));
+        Line newLine = new Line(this.m, n, this.getColor());
+        return newLine;
     }
 
     @Override
@@ -126,12 +121,7 @@ public class Line extends Shape {
     }
 
     @Override
-    public Shape move(int x, int y) {
-        int n = (int) (y + this.n - (this.m * x));
-
-        Line newLine = new Line(this.m, n, this.getColor());
-
-        return newLine;
+    public String toString() {
+        return "Line [m=" + this.m + ", n=" + this.n + "]";
     }
-
 }

@@ -18,7 +18,6 @@ import org.junit.Test;
 public class CollectionsTest {
     @Test
     public void ArrayTest1() {
-
         String Stringarray[] = new String[5];
         Stringarray[0] = "Hallo";
         System.out.println(Stringarray[0]);
@@ -26,15 +25,14 @@ public class CollectionsTest {
         double tab[][] = new double[5][3];//Tabelle mit Elementen vom Typ double mit 5 Zeilen und 3 Spalten
         tab[1][1] = 3.0;
         Assert.assertEquals(3.0, tab[1][1], 0.0001);
-
     }
 
-    /* LinkedList wird als doppelt verkettete Liste implementiert. Jedes Element (außer Ränder)
+    /**
+     * LinkedList wird als doppelt verkettete Liste implementiert. Jedes Element (außer Ränder)
      * hat einen Vorgänger und Nachfolger.
-    */
+     */
     @Test
     public void CollectionsTest1() {
-
         List<Shape> shapeList = new LinkedList<Shape>();
         shapeList.add(Point.of(1, 9));
         shapeList.add(Point.of(18, 9));
@@ -42,16 +40,14 @@ public class CollectionsTest {
             System.out.println(shape.toString());
         }
         shapeList.stream().forEach(shape -> System.out.println(shape));
-
     }
 
-    /* Set is a Collection that cannot contain duplicate elements.
-     *A Hash set is an unsorted Set.
-     * */
-
+    /**
+     * Set is a Collection that cannot contain duplicate elements.
+     * A Hash set is an unsorted Set.
+     */
     @Test
     public void CollectionsTest3() {
-
         Set<Shape> shapeS = new HashSet<>();
         shapeS.add(Point.of(1, 9));
         shapeS.add(Point.of(18, 9));
@@ -61,16 +57,14 @@ public class CollectionsTest {
             System.out.println(shape.toString());
         }
         shapeS.stream().forEach(shape -> System.out.println(shape));
-
     }
-    /* Jedes Exemplar der ArrayList vertritt ein Array mit unterschieddlicher Länge.
-     * (ohne beso. Angaben: Array mit einer Capazität von 10)
-     *
-     */
 
+    /**
+     * Jedes Exemplar der ArrayList vertritt ein Array mit unterschieddlicher Länge.
+     * (ohne beso. Angaben: Array mit einer Capazität von 10)
+     */
     @Test
     public void CollectionsTest2() {
-
         List<Integer> intList = new ArrayList<Integer>();
         intList.add(4);
         intList.add(3);
@@ -83,12 +77,10 @@ public class CollectionsTest {
         System.out.println("Anzahl der Elemente:" + intList.size());
         intList.clear();
         System.out.println(intList.isEmpty());
-
     }
 
     @Test
     public void CollectionsTest4() {
-
         Map<Integer, String> mapo = new HashMap<>();
         mapo.put(0, "Hallo1");
         mapo.put(1, "Hallo2");
@@ -99,12 +91,9 @@ public class CollectionsTest {
 
     @Test
     public void CollectionsTest5() {
-
         Comparator<Integer> ic = new Comparator<Integer>() {
-
             @Override
             public int compare(Integer o1, Integer o2) {
-
                 return o1 - o2;
             }
         };
@@ -114,10 +103,8 @@ public class CollectionsTest {
         treeS.add(0);
         treeS.add(4);
         for ( Integer i : treeS ) {
-
             System.out.println(i);
         }
-
     }
 
     @Test
@@ -127,10 +114,8 @@ public class CollectionsTest {
         Point c = Point.of(4, 4);
 
         Comparator<Point> pc = new Comparator<Point>() {
-
             @Override
             public int compare(Point o1, Point o2) {
-
                 return o1.getX() - o2.getX();
             }
         };
@@ -140,9 +125,7 @@ public class CollectionsTest {
         treeP.add(c);
         for ( Point p : treeP ) {
             System.out.println(p);
-
         }
-
     }
 
     @Test
@@ -152,10 +135,8 @@ public class CollectionsTest {
         Point c = Point.of(8, 0);
 
         Comparator<Point> pc = new Comparator<Point>() {
-
             @Override
             public int compare(Point o1, Point o2) {
-
                 return o1.length(o1) - o2.length(o2);
             }
         };
@@ -165,18 +146,14 @@ public class CollectionsTest {
         treeP.add(c);
         for ( Point p : treeP ) {
             System.out.println(p);
-
         }
     }
 
     @Test
     public void CollectionsTest8() {
-
         Comparator<Shape> sc = new Comparator<Shape>() {
-
             @Override
             public int compare(Shape x, Shape y) {
-
                 return x.getIdentity() - y.getIdentity();
             }
         };
@@ -194,7 +171,6 @@ public class CollectionsTest {
         for ( Shape e : shapeS ) {
             System.out.println(e);
         }
-
     }
 
     @Test
@@ -213,27 +189,21 @@ public class CollectionsTest {
         seP.add(e);
 
         seP.stream().filter(CollectionsTest::rot).forEach(CollectionsTest::raus);
-
     }
 
     public static void raus(Object x) {
         System.out.println(x);
-
     }
 
     public static boolean rot(Shape x) {
         return x.getColor().equals(Color.RED);
-
     }
 
     @Test
     public void CollectionsTest10() {
-
         Comparator<Integer> ic = new Comparator<Integer>() {
-
             @Override
             public int compare(Integer o1, Integer o2) {
-
                 return o1 - o2;
             }
         };
@@ -247,13 +217,11 @@ public class CollectionsTest {
         treeS.add(11);
         treeS.add(6);
         for ( Integer i : treeS ) {
-
             System.out.println(i);
         }
         String stringr;
         stringr = treeS.stream().filter(x -> (x % 2) == 0).map(x -> x * x).map(x -> "(" + x + ")").collect(Collectors.joining(",", "<<<", ">>>"));
         System.out.println(stringr);
-
     }
 
     @Test
@@ -266,9 +234,6 @@ public class CollectionsTest {
         } else {
             isEven = false;
         }
-
         isEven = (a % 2) == 0;
-
     }
-
 }

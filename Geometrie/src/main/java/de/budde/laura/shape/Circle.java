@@ -7,14 +7,13 @@ import de.budde.laura.painter.CirclePainter;
 import de.budde.laura.painter.Painter;
 
 public class Circle extends Shape {
-    private Point center;
-    private int radius;
+    private final Point center;
+    private final int radius;
 
     private Circle(Point center, int radius, Color c) {
         super(c);
         this.center = center;
         this.radius = radius;
-
     }
 
     /**
@@ -26,25 +25,10 @@ public class Circle extends Shape {
      */
     public static Circle of(Point center, int radius, Color c) {
         return new Circle(center, radius, c);
-
     }
 
     public static Circle of(Point center, int radius) {
         return new Circle(center, radius, Color.YELLOW);
-
-    }
-
-    @Override
-    public Painter getPainter(Graphics2D g2, int width, int height) {
-
-        return new CirclePainter(g2, this, width, height);
-    }
-
-    @Override
-    public Shape move(int x, int y) {
-        Point clonedCenter = (Point) this.center.move(x, y);
-
-        return new Circle(clonedCenter, this.radius, this.getColor());
     }
 
     /**
@@ -63,6 +47,22 @@ public class Circle extends Shape {
      */
     public int getRadius() {
         return this.radius;
+    }
+
+    @Override
+    public Shape move(int x, int y) {
+        Point clonedCenter = (Point) this.center.move(x, y);
+        return new Circle(clonedCenter, this.radius, this.getColor());
+    }
+
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+        return new CirclePainter(g2, this, width, height);
+    }
+
+    @Override
+    public String toString() {
+        return "Circle [center=" + this.center + ", radius=" + this.radius + "]";
     }
 
 }

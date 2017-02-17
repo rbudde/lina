@@ -20,14 +20,23 @@ public abstract class Shape {
         LOG.info("Shape " + this.identity + " created");
     }
 
-    public abstract Painter getPainter(Graphics2D g2, int width, int height);
-
     public int getIdentity() {
         return this.identity;
     }
 
     public Color getColor() {
         return this.c;
+    }
+
+    /**
+     * Moves the object by adding the coordinates of Point p.
+     * A new Shape object is created.
+     *
+     * @param p
+     * @return The new moved Point
+     */
+    public Shape move(Point p) {
+        return this.move(p.getX(), p.getY());
     }
 
     /**
@@ -40,15 +49,6 @@ public abstract class Shape {
      */
     public abstract Shape move(int x, int y);
 
-    /**
-     * Moves the object by adding the coordinates of Point p.
-     * A new Shape object is created.
-     *
-     * @param p
-     * @return The new moved Point
-     */
-    public Shape move(Point p) {
-        return this.move(p.getX(), p.getY());
-    }
+    public abstract Painter getPainter(Graphics2D g2, int width, int height);
 
 }

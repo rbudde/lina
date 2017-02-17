@@ -30,7 +30,6 @@ public class LineTest {
         Assert.assertEquals(0.5, g1.getM(), 0.0001);
         Assert.assertEquals(2, g1.getN());
         Assert.assertEquals(5, g1.calculateY(6));
-
     }
 
     @Test
@@ -48,12 +47,10 @@ public class LineTest {
         Line d = Line.of(0.5, 400);
         System.out.println(d);
         System.out.println(d.calculateX(600));
-
     }
 
     @Test
     public void moveMethod() {
-
         Line g1 = Line.of(0, 2);
         System.out.println(g1);
         g1 = (Line) g1.move(3, 3);
@@ -65,7 +62,6 @@ public class LineTest {
         System.out.println(k1);
         k1 = (Line) k1.move(10, 10);
         System.out.println(k1);
-
     }
 
     @Test
@@ -75,7 +71,6 @@ public class LineTest {
         m = 0;
         Line l1 = Line.of(a, 0);
         Assert.assertEquals(2, l1.getN());
-
     }
 
     @Test
@@ -88,7 +83,5 @@ public class LineTest {
         Assert.assertEquals(i.getM(), j1.getM(), 0.0001);
         Assert.assertEquals(i.getM(), j2.getM(), 0.0001);
         System.out.println("" + i + j1);
-
     }
-
 }

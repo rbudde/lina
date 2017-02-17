@@ -9,7 +9,7 @@ import de.budde.laura.painter.Painter;
 
 public class Composite extends Shape {
 
-    private List<Shape> shapesList = new ArrayList<>();
+    private final List<Shape> shapesList = new ArrayList<>();
 
     public Composite() {
         super(Color.YELLOW);
@@ -22,26 +22,7 @@ public class Composite extends Shape {
     }
 
     public void removeShape(Shape s) {
-
         this.shapesList.remove(s);
-    }
-
-    public void printShapes() {
-
-        System.out.println(this.shapesList);
-    }
-
-    @Override
-    public Painter getPainter(Graphics2D g2, int width, int height) {
-
-        return new Painter(g2, width, height) {
-
-            @Override
-            public void paint() {
-                Composite.this.shapesList.forEach(s -> s.getPainter(this.g2, this.width, this.height).paint());
-
-            }
-        };
     }
 
     @Override
@@ -53,4 +34,18 @@ public class Composite extends Shape {
         return s;
     }
 
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+        return new Painter(g2, width, height) {
+            @Override
+            public void paint() {
+                Composite.this.shapesList.forEach(s -> s.getPainter(this.g2, this.width, this.height).paint());
+            }
+        };
+    }
+
+    @Override
+    public String toString() {
+        return "Composite [shapesList=" + this.shapesList + "]";
+    }
 }

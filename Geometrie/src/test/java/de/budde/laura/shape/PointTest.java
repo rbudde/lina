@@ -8,7 +8,6 @@ public class PointTest {
     private static final double EPS = 0.000001;
 
     @Test
-
     public void testPoint() {
         Point a = Point.of(1, 2);
 
@@ -40,9 +39,9 @@ public class PointTest {
         Assert.assertEquals(0, o.getX());
         Assert.assertEquals(0, o.getY());
         Assert.assertEquals(0.0, Point.distance(o, o), EPS);
+        System.out.println(o);
         o = (Point) o.move(1, 1);
-        o.print();
-
+        System.out.println(o);
     }
 
     @Test
@@ -64,6 +63,5 @@ public class PointTest {
         System.out.println(a);
         b = (Point) a.move(2, 2);
         System.out.println(b);
-
     }
 }

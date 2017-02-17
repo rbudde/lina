@@ -7,7 +7,6 @@ import de.budde.laura.painter.Painter;
 import de.budde.laura.painter.SegmentPainter;
 
 public class Segment extends Shape {
-
     private Point start;
     private Point end;
 
@@ -22,16 +21,13 @@ public class Segment extends Shape {
         super(c);
         this.start = p1;
         this.end = p2;
-
     }
 
     public static Segment of(Point p1, Point p2, Color c) {
-
         return new Segment(p1, p2, c);
     }
 
     public static Segment of(Point p1, Point p2) {
-
         return new Segment(p1, p2, Color.BLUE);
     }
 
@@ -65,27 +61,23 @@ public class Segment extends Shape {
     }
 
     @Override
-    public String toString() {
-        return "Distance  [start=" + this.start + ", end=" + this.end + "]";
-    }
-
-    @Override
-    public Painter getPainter(Graphics2D g2, int width, int height) {
-
-        return new SegmentPainter(g2, this, width, height);
-    }
-
-    @Override
     public Shape move(int x, int y) {
-
         int a = this.start.getX() + x;
         int b = this.start.getY() + y;
         int c = this.end.getX() + x;
         int d = this.end.getY() + y;
         Point newstart = Point.of(a, b);
         Point newend = Point.of(c, d);
-
         return new Segment(newstart, newend, this.getColor());
     }
 
+    @Override
+    public Painter getPainter(Graphics2D g2, int width, int height) {
+        return new SegmentPainter(g2, this, width, height);
+    }
+
+    @Override
+    public String toString() {
+        return "Distance  [start=" + this.start + ", end=" + this.end + "]";
+    }
 }

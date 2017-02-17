@@ -36,7 +36,6 @@ public class SegmentTest {
         System.out.println(st);
         st = (Segment) st.move(2, 5);
         System.out.println(st);
-
     }
 
     @Test
@@ -48,6 +47,5 @@ public class SegmentTest {
         System.out.println(s1);
         s2 = (Segment) s1.move(3, 3);
         System.out.println(s2);
-
     }
 }
