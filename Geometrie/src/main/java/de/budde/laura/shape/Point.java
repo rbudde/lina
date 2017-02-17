@@ -50,7 +50,7 @@ public class Point extends Shape {
      * @return x
      */
     public int getX() {
-        return x;
+        return this.x;
     }
 
     /**
@@ -59,7 +59,7 @@ public class Point extends Shape {
      * @return y
      */
     public int getY() {
-        return y;
+        return this.y;
     }
 
     /**
@@ -98,7 +98,7 @@ public class Point extends Shape {
 
     @Override
     public String toString() {
-        return "Point [x=" + x + ", y=" + y + "]";
+        return "Point [x=" + this.x + ", y=" + this.y + "]";
     }
 
     @Override
@@ -107,6 +107,10 @@ public class Point extends Shape {
         return new PointPainter(g2, this, width, height);
     }
 
+    /**
+     * Clone a Point. There'll be two Points.
+     * The new Point will be shifted by adding the X and Y coordinates.
+     */
     @Override
     public Shape clone(int x, int y) {
 

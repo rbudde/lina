@@ -12,18 +12,18 @@ public class Composite extends Shape {
 
     public void addShape(Shape... s) {
         for ( Shape shape : s ) {
-            shapesList.add(shape);
+            this.shapesList.add(shape);
         }
     }
 
     public void removeShape(Shape s) {
 
-        shapesList.remove(s);
+        this.shapesList.remove(s);
     }
 
     public void printShapes() {
 
-        System.out.println(shapesList);
+        System.out.println(this.shapesList);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Composite extends Shape {
 
             @Override
             public void paint() {
-                shapesList.forEach(s -> s.getPainter(g2, width, height).paint());
+                Composite.this.shapesList.forEach(s -> s.getPainter(this.g2, this.width, this.height).paint());
 
             }
         };
@@ -42,13 +42,13 @@ public class Composite extends Shape {
     @Override
     public void move(int x, int y) {
 
-        shapesList.stream().forEach(s -> s.move(x, y));
+        this.shapesList.stream().forEach(s -> s.move(x, y));
     }
 
     @Override
     public Shape clone(int x, int y) {
         Composite s = new Composite();
-        for ( Shape shape : shapesList ) {
+        for ( Shape shape : this.shapesList ) {
             s.addShape(shape.clone(x, y));
         }
         return s;

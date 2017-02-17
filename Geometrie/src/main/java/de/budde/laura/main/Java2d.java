@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import de.budde.laura.shape.Circle;
 import de.budde.laura.shape.Composite;
 import de.budde.laura.shape.Line;
 import de.budde.laura.shape.Point;
@@ -21,14 +22,14 @@ public class Java2d {
     Graphics2D g2;
 
     private static final int WIDTH = 1000;
-    private static final int HEIGHT = 700;
+    private static final int HEIGHT = 600;
 
     public Java2d() {
         final JFrame frame = new JFrame();
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(WIDTH, HEIGHT + 100);
 
         final JPanel panel = new JPanel();
-        panel.setSize(WIDTH, HEIGHT - 100);
+        panel.setSize(WIDTH, HEIGHT);
 
         JButton button = new JButton("paint");
         button.setEnabled(true);
@@ -51,6 +52,23 @@ public class Java2d {
     }
 
     private void paintImpl() {
+        Point a = Point.of(100, 100);
+        Point b = Point.of(200, 100);
+        Point c = Point.of(200, 150);
+        Point d = Point.of(100, 150);
+        Segment s1 = Segment.of(a, b);
+        Segment s2 = Segment.of(b, c);
+        Segment s3 = Segment.of(c, d);
+        Segment s4 = Segment.of(d, a);
+
+        Composite comp = new Composite();
+        comp.addShape(s1, s2, s3, s4);
+        comp.getPainter(this.g2, WIDTH, HEIGHT).paint();
+        comp.clone(100, 0);
+
+    }
+
+    private void paintImpll() {
         Composite comp = new Composite();
 
         Line c = Line.of(0.0, 400);
@@ -122,6 +140,15 @@ public class Java2d {
         comp.addShape(c, d, e, f, g, h, i, j, p15, se1);
         comp.getPainter(this.g2, WIDTH, HEIGHT).paint();
         comp.clone(100, 100).getPainter(this.g2, WIDTH, HEIGHT).paint();
+
+        Point ca = Point.of(100, 100);
+        Circle cc = Circle.of(ca, 100);
+        cc.setColor(Color.BLUE);
+        cc.getPainter(this.g2, WIDTH, HEIGHT).paint();
+        cc.move(100, 100);
+        cc.setColor(Color.RED);
+
+        cc.getPainter(this.g2, WIDTH, HEIGHT).paint();
 
     }
 
