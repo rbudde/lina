@@ -19,5 +19,8 @@ public class CompositeTests {
         System.out.println(c);
         c = (Composite) c.move(2, 3);
         System.out.println(c);
+        c.removeShape(a);
+        System.out.println(c);
+
     }
 }
