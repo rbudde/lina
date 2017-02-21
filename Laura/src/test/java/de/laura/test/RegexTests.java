@@ -41,7 +41,7 @@ public class RegexTests {
 
     @Test
 
-    public void Zahlenfinder() {
+    public void ZahlenfinderTest2() {
 
         String s = "'Wer die Freiheit sucht,der tut wohl, welcher aber die" + "Freiheit lebt," + "der tut besser!'1. Korintehere 7,38";
         Matcher matcher = Pattern.compile("\\d+").matcher(s);
@@ -49,15 +49,35 @@ public class RegexTests {
             System.out.printf("%s an Position [%d,%d]%n", matcher.group(), matcher.start(), matcher.end());
         }
 
-        Pattern patternt = Pattern.compile("<b>.*</b>");
-        Matcher matchert = patternt.matcher("peng <b>trollolo</b>. <b>hahahha</b>!");
-        while ( matchert.find() ) {
-            System.out.println(matchert.group());
-
+        Pattern pattern1 = Pattern.compile("<b>.*?</b>");
+        Matcher matcher1 = pattern1.matcher("Echt <b>fett</b>. <b>Cool</b>!");
+        while ( matcher1.find() ) {
+            System.out.println(matcher1.group());
         }
-        System.out.println("Lina,".matches(".*^Lina,$.*"));
+
+        System.out.println("Lina,".matches(".*Lina,.*"));
         System.out.println("Fwd:\nLina,\nhol dden Ball!".matches("(?sm).*^Lina,$.*"));
 
     }
 
+    @Test
+    public void Test3() {
+
+        String s =
+
+            "\n<b>Der Hennastrauch</b> (Lawsonia inermis, Syn.: Lawsonia alba (L.) Lam., Lawsonia spinosa L.)\n"
+                + "ist die einzige Pflanzenart der monotypischen Gattung Lawsonia und gehört zur Subtribus Lagerstroemiinae"
+                + "und der Tribus Nesaeeae\ninnerhalb der Familie der Weiderichgewächse (Lythraceae).\nDie Gattung wurde nach"
+                + "Isaac Lawson benannt, der 1735 half die erste Auflage von Linnés Systema Naturae zu finanzieren.";
+        Matcher matcher = Pattern.compile("<b>.*?</b>").matcher(s);
+        while ( matcher.find() ) {
+            System.out.println(matcher.group());
+        }
+
+        Matcher matcher1 = Pattern.compile("\\d+").matcher(s);
+        while ( matcher1.find() ) {
+            System.out.printf("%s an Position [%d,%d]%n", matcher1.group(), matcher1.start(), matcher1.end());
+
+        }
+    }
 }
