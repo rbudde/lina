@@ -50,10 +50,13 @@ public class RegexTests {
         }
 
         Pattern patternt = Pattern.compile("<b>.*</b>");
-        Matcher matchert = patternt.matcher("Echt <b>fett</b>. <b>Cool</b>!");
+        Matcher matchert = patternt.matcher("peng <b>trollolo</b>. <b>hahahha</b>!");
         while ( matchert.find() ) {
             System.out.println(matchert.group());
+
         }
+        System.out.println("Lina,".matches(".*^Lina,$.*"));
+        System.out.println("Fwd:\nLina,\nhol dden Ball!".matches("(?sm).*^Lina,$.*"));
 
     }
 
