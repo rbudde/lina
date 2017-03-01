@@ -62,13 +62,13 @@ public class RegexTests {
 
     @Test
     public void Test3() {
-
         String s =
 
             "\n<b>Der Hennastrauch</b> (Lawsonia inermis, Syn.: Lawsonia alba (L.) Lam., Lawsonia spinosa L.)\n"
                 + "ist die einzige Pflanzenart der monotypischen Gattung Lawsonia und gehört zur Subtribus Lagerstroemiinae"
                 + "und der Tribus Nesaeeae\ninnerhalb der Familie der Weiderichgewächse (Lythraceae).\nDie Gattung wurde nach"
                 + "Isaac Lawson benannt, der 1735 half die erste Auflage von Linnés Systema Naturae zu finanzieren.";
+        System.out.println(s + "\n   ");
         Matcher matcher = Pattern.compile("<b>.*?</b>").matcher(s);
         while ( matcher.find() ) {
             System.out.println(matcher.group());
