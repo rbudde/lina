@@ -8,19 +8,21 @@ class Auto {
     private static int counter = 0;
 
     public Auto(double startTacho, double stopTacho, double liter) {
-        startKilometer = startTacho;
-        endeKilometer = stopTacho;
-        literBenzin = liter;
+        this.startKilometer = startTacho;
+
+        this.endeKilometer = stopTacho;
+
+        this.literBenzin = liter;
 
     }
 
     public double berechneLPK() {
-        return ((endeKilometer - startKilometer) / literBenzin);
+        return ((this.endeKilometer - this.startKilometer) / this.literBenzin);
 
     }
 
     public double berechneEntfernung() {
-        return (endeKilometer - startKilometer);
+        return (this.endeKilometer - this.startKilometer);
 
     }
 }

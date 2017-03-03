@@ -11,21 +11,21 @@ public class Punkt {
     }
 
     public Punkt() {
-        x = 0;
-        y = 0;
+        this.x = 0;
+        this.y = 0;
     }
 
     public Punkt(double a, double b) {
-        x = x;
-        y = y;
+        this.x = this.x;
+        this.y = this.y;
     }
 
     public int getx() {
-        return x;
+        return this.x;
     }
 
     public int gety() {
-        return y;
+        return this.y;
     }
 
     public void move(int x, int y) {
@@ -54,7 +54,7 @@ public class Punkt {
 
     @Override
     public String toString() {
-        return "Punkt [x=" + x + ", y=" + y + "]";
+        return "Punkt [x=" + this.x + ", y=" + this.y + "]";
     }
 
 }

@@ -8,8 +8,9 @@ public class Gerade {
 
     public Gerade(Punkt pk1, Punkt pk2) {
 
-        m = (double) (pk1.gety() - pk2.gety()) / (double) (pk1.getx() - pk2.getx());
-        n = (int) (pk1.gety() - (m * pk1.getx()));
+        this.m = (double) (pk1.gety() - pk2.gety()) / (double) (pk1.getx() - pk2.getx());
+
+        this.n = (int) (pk1.gety() - (this.m * pk1.getx()));
 
     }
 
@@ -20,20 +21,20 @@ public class Gerade {
     }
 
     public int berechneY(int x) {
-        return (int) (m * x + n);
+        return (int) (this.m * x + this.n);
     }
 
     public double getM() {
-        return m;
+        return this.m;
     }
 
     public int getN() {
-        return n;
+        return this.n;
     }
 
     @Override
     public String toString() {
-        return "Gerade [m=" + m + ", n=" + n + "]";
+        return "Gerade [m=" + this.m + ", n=" + this.n + "]";
     }
 
 }

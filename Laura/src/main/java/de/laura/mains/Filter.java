@@ -45,24 +45,72 @@ public class Filter {
 
     }
 
+    /**
+     * Seeks for the biggest File(bytes) in a given File(root).
+     *
+     * @param root (the File to work with)
+     * @return the biggestFile (returns root, if root is not a directory)
+     */
+
     public File maxDir(File root) {
-        File longest;
-        List<File> resultDataList = new ArrayList<>();
 
         if ( root.isDirectory() ) {
-            if ( root.length() == 0 ) {
-            }
+
+            File biggestFile = null;
             File[] directoryFiles = root.listFiles();
             for ( File file : directoryFiles ) {
-                List<File> resultFiles = filterDir(file);
-                resultDataList.addAll(resultFiles);
+                File biggestFileOfChild = maxDir(file);
+                if ( biggestFile == null ) {
+                    biggestFile = biggestFileOfChild;
+                } else if ( biggestFileOfChild == null ) {
+                    //alles gut
+                } else if ( biggestFile.length() < biggestFileOfChild.length() ) {
+                    biggestFile = biggestFileOfChild;
+                } else {
+                    //alles gut
+                }
             }
-            return null;
-        } else {
-
-            return root;
-
+            return biggestFile;
         }
 
+        else {
+
+            return root;
+        }
     }
+
+    /**
+     * Returns the File which has been modified most recently in a given File(root).
+     * 
+     * @param root (the File to work with)
+     * @return the newestFile (returns root, if root is not a directory)
+     */
+    public File dateDir(File root) {
+
+        if ( root.isDirectory() ) {
+
+            File newestFile = null;
+            File[] directoryFiles = root.listFiles();
+
+            for ( File file : directoryFiles ) {
+                File newestFileOfChild = maxDir(file);
+                if ( newestFile == null ) {
+                    newestFile = newestFileOfChild;
+                } else if ( newestFileOfChild == null ) {
+                    //alles gut
+                } else if ( newestFile.lastModified() < newestFileOfChild.lastModified() ) {
+                    newestFile = newestFileOfChild;
+                } else {
+                    //alles gut
+                }
+            }
+            return newestFile;
+        }
+
+        else {
+
+            return root;
+        }
+    }
+
 }

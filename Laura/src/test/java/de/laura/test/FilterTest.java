@@ -1,6 +1,7 @@
 package de.laura.test;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -24,12 +25,18 @@ public class FilterTest {
     @Test
     public void filterTest2() {
         Filter filter = new Filter(".*txt");
-        File f = new File("src/main/resources");
-        List<File> result = filter.filterDir(f);
-        for ( File file : result ) {
-            System.out.println(file.getAbsolutePath());
+        File f = new File("src/main/java");
+        File result = filter.maxDir(f);
+        System.out.println(result + " Länge:" + result.length());
 
-        }
+    }
+
+    @Test
+    public void filterTest3() {
+        Filter filter = new Filter(".*txt");
+        File f = new File("src/test/java");
+        File result = filter.dateDir(f);
+        System.out.println(result + " letztes Mal bearbeitet:" + new Date(result.lastModified()));
 
     }
 }
